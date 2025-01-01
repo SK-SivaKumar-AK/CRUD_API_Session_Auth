@@ -71,9 +71,17 @@ const login = async (req , res) => {
 };
 
 
+const logout = (req , res) => {
+    req.session.destroy();
+    res.clearCookie('connect.sid');
+    res.status(200).json({ message: 'Logout successful' });
+}
+
+
 
 /* file export */
 module.exports = {
     registerUser,
-    login
+    login,
+    logout
 }
